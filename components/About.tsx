@@ -19,7 +19,7 @@ const About = () => {
               {/* Profile image */}
               <div className="relative z-10 w-full h-full overflow-hidden rounded-lg">
                 <Image
-                  src="/profile.jpg" 
+                  src="/profile.png" 
                   alt="Darshit Bhalodi" 
                   fill
                   className="object-cover"
