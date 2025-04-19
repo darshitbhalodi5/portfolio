@@ -3,16 +3,19 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useActiveSection } from '@/hooks/useActiveSection';
+import { useTheme } from '@/context/ThemeContext';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const activeSection = useActiveSection();
+  const { theme, toggleTheme } = useTheme();
 
   const navItems = [
     { id: 'about', label: 'About' },
     { id: 'projects', label: 'Projects' },
     { id: 'experience', label: 'Experience' },
     { id: 'skills', label: 'Skills' },
+    { id: 'ai-tools', label: 'AI Corner' },
   ];
 
   const isActive = (section: string) => {
@@ -29,33 +32,61 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+            <div className="ml-10 flex items-center space-x-4">
               {navItems.map((item) => (
-                <Link 
+                <Link
                   key={item.id}
-                  href={`/#${item.id}`} 
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    isActive(item.id) 
-                      ? 'text-accent border-b-2 border-accent' 
+                  href={`/#${item.id}`}
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center h-full ${isActive(item.id)
+                      ? 'text-accent border-b-2 border-accent'
                       : 'hover:text-accent'
-                  }`}
+                    }`}
                 >
                   {item.label}
                 </Link>
               ))}
-              <Link 
-                href="/#contact" 
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-                  isActive('contact')
-                    ? 'bg-accent text-white' 
+              <Link
+                href="/#contact"
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors flex items-center ${isActive('contact')
+                    ? 'bg-accent text-white'
                     : 'bg-accent/10 text-accent border border-accent/20 hover:bg-accent/20'
-                }`}
+                  }`}
               >
                 Contact
               </Link>
+              <button
+                onClick={toggleTheme}
+                className="ml-4 p-2 rounded-full bg-background/80 border border-accent/20 hover:bg-accent/10 transition-colors flex items-center justify-center"
+                aria-label="Toggle theme"
+              >
+                {theme === 'dark' ? (
+                  <svg className="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                  </svg>
+                ) : (
+                  <svg className="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                  </svg>
+                )}
+              </button>
             </div>
           </div>
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={toggleTheme}
+              className="mr-2 p-2 rounded-full bg-background/80 border border-accent/20 hover:bg-accent/10 transition-colors flex items-center justify-center"
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? (
+                <svg className="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg>
+              ) : (
+                <svg className="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                </svg>
+              )}
+            </button>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md hover:text-accent focus:outline-none"
@@ -79,26 +110,24 @@ const Navbar = () => {
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-background/95 backdrop-blur-sm shadow-lg border-t border-accent/10">
             {navItems.map((item) => (
-              <Link 
+              <Link
                 key={item.id}
-                href={`/#${item.id}`} 
-                className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                  isActive(item.id) 
-                    ? 'text-accent bg-accent/5' 
+                href={`/#${item.id}`}
+                className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${isActive(item.id)
+                    ? 'text-accent bg-accent/5'
                     : 'hover:text-accent'
-                }`}
+                  }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}
               </Link>
             ))}
-            <Link 
-              href="/#contact" 
-              className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                isActive('contact') 
-                  ? 'text-accent bg-accent/5' 
+            <Link
+              href="/#contact"
+              className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${isActive('contact')
+                  ? 'text-accent bg-accent/5'
                   : 'hover:text-accent'
-              }`}
+                }`}
               onClick={() => setIsMenuOpen(false)}
             >
               Contact

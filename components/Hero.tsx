@@ -14,7 +14,7 @@ const Hero = () => {
           </div>
           
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-            Hi, I&apos;m <span className="gradient-text">Darshit</span>
+            Hi, I&apos;m <span className="gradient-text">Darshit Bhalodi</span>
           </h1>
           
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 text-foreground/80">
@@ -59,6 +59,20 @@ const Hero = () => {
             </a>
           </div>
         </div>
+      </div>
+      
+      {/* Scroll down indicator */}
+      <div className="absolute bottom-10 left-0 right-0 flex justify-center animate-bounce">
+        <Link 
+          href="/#about"
+          aria-label="Scroll to about section" 
+          className="flex flex-col items-center text-accent/70 hover:text-accent transition-colors"
+        >
+          <span className="text-xs mb-2">Scroll Down</span>
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
+        </Link>
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
 import About from "@/components/About";
+import AITools from "@/components/AITools";
 import Contact from "@/components/Contact";
 import Experience from "@/components/Experience";
 import Footer from "@/components/Footer";
@@ -17,6 +18,7 @@ export default function Home() {
         <Projects />
         <Experience />
         <Skills />
+        <AITools />
         <Contact />
       </main>
       <Footer />
