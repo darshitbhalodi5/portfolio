@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import AnimatedSection from './AnimatedSection';
+import AnimatedElement from './AnimatedElement';
 
 const ProjectCard = ({ 
   title, 
@@ -6,7 +8,8 @@ const ProjectCard = ({
   tags, 
   imageUrl, 
   demoUrl, 
-  codeUrl
+  codeUrl,
+  index
 }: {
   title: string;
   description: string;
@@ -14,9 +17,15 @@ const ProjectCard = ({
   imageUrl: string;
   demoUrl?: string;
   codeUrl?: string;
+  index: number;
 }) => {
   return (
-    <div className="card overflow-hidden flex flex-col h-full group">
+    <AnimatedElement
+      variant="fadeInUp"
+      delay={0.1 + index * 0.1}
+      className="card overflow-hidden flex flex-col h-full group"
+      whileHover="scale"
+    >
       <div className="relative h-52 w-full bg-gradient-to-br from-accent/10 to-primary/10 flex items-center justify-center">
         <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
         <Image
@@ -31,9 +40,9 @@ const ProjectCard = ({
         <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">{title}</h3>
         <p className="text-foreground/80 mb-4">{description}</p>
         <div className="flex flex-wrap gap-2 mb-4">
-          {tags.map((tag, index) => (
+          {tags.map((tag, i) => (
             <span 
-              key={index} 
+              key={i} 
               className="px-2 py-1 text-xs font-medium bg-accent/10 text-accent rounded-md"
             >
               {tag}
@@ -69,7 +78,7 @@ const ProjectCard = ({
           </a>
         )}
       </div>
-    </div>
+    </AnimatedElement>
   );
 };
 
@@ -126,11 +135,11 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20">
+    <AnimatedSection id="projects" variant="fadeIn" className="py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold mb-12 text-center">
+        <AnimatedElement variant="fadeInUp" className="text-3xl font-bold mb-12 text-center">
           My <span className="gradient-text">Projects</span>
-        </h2>
+        </AnimatedElement>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <ProjectCard
@@ -141,11 +150,12 @@ const Projects = () => {
               imageUrl={project.imageUrl}
               demoUrl={project.demoUrl}
               codeUrl={project.codeUrl}
+              index={index}
             />
           ))}
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 };
 

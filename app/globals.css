@@ -60,3 +60,16 @@ body {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px -5px rgba(124, 58, 237, 0.3);
 }
+
+/* Custom cursor styles */
+.custom-cursor {
+  cursor: none;
+}
+
+.custom-cursor a, 
+.custom-cursor button, 
+.custom-cursor input, 
+.custom-cursor select, 
+.custom-cursor textarea {
+  cursor: none;
+}

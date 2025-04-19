@@ -1,74 +1,93 @@
+import Image from 'next/image';
+import AnimatedSection from './AnimatedSection';
+import AnimatedElement from './AnimatedElement';
+
 const About = () => {
   return (
-    <section id="about" className="py-20">
+    <AnimatedSection id="about" variant="fadeIn" className="py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold mb-12 text-center">
-          About <span className="gradient-text">Me</span>
-        </h2>
-        <div className="flex flex-col md:flex-row gap-12 items-center">
-          <div className="md:w-1/2">
-            <p className="text-lg mb-4">
-              Hi there! I&apos;m Darshit, a passionate Web3 developer with expertise in blockchain technologies and decentralized applications. I enjoy working at the intersection of cutting-edge technology and practical applications.
-            </p>
-            <p className="text-lg mb-4">
-              My journey in Web3 began several years ago when I first discovered Bitcoin. Since then, I&apos;ve been fascinated by the potential of blockchain to transform various industries and have dedicated my career to building in this space.
-            </p>
-            <p className="text-lg mb-4">
-              I specialize in developing smart contracts, DeFi protocols, NFT platforms, and integrating Web2 applications with blockchain technology. My goal is to create secure, efficient, and user-friendly decentralized solutions.
-            </p>
-            <p className="text-lg">
-              When I&apos;m not coding, you can find me researching new blockchain protocols, participating in hackathons, or contributing to open-source projects in the Web3 ecosystem.
-            </p>
-          </div>
-          <div className="md:w-1/2 flex justify-center">
-            <div className="relative">
-              <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-accent/30 to-primary/30 blur-xl opacity-70"></div>
-              <div className="relative bg-background/80 backdrop-blur-sm rounded-lg p-6 sm:p-8 border border-accent/10">
-                <h3 className="font-bold text-xl mb-4 gradient-text">My Expertise</h3>
-                <ul className="space-y-2">
-                  <li className="flex items-center">
-                    <svg className="w-5 h-5 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    Smart Contract Development (Solidity)
-                  </li>
-                  <li className="flex items-center">
-                    <svg className="w-5 h-5 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    DeFi Protocol Development
-                  </li>
-                  <li className="flex items-center">
-                    <svg className="w-5 h-5 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    NFT Solutions & Marketplaces
-                  </li>
-                  <li className="flex items-center">
-                    <svg className="w-5 h-5 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    Web3 Integration with Web2 Applications
-                  </li>
-                  <li className="flex items-center">
-                    <svg className="w-5 h-5 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    Full-Stack Web Development (Next.js, React)
-                  </li>
-                  <li className="flex items-center">
-                    <svg className="w-5 h-5 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    Blockchain Architecture & Design
-                  </li>
-                </ul>
+        <div className="flex flex-col lg:flex-row items-center gap-12">
+          <AnimatedElement
+            variant="fadeInLeft"
+            className="lg:w-1/2 relative"
+          >
+            <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto lg:mx-0 mb-8 lg:mb-0">
+              {/* Decorative elements */}
+              <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-accent rounded-lg"></div>
+              <div className="absolute -top-4 -left-4 w-full h-full bg-accent/10 rounded-lg"></div>
+              
+              {/* Profile image */}
+              <div className="relative z-10 w-full h-full overflow-hidden rounded-lg">
+                <Image
+                  src="/profile.jpg" 
+                  alt="Darshit Bhalodi" 
+                  fill
+                  className="object-cover"
+                />
               </div>
             </div>
-          </div>
+          </AnimatedElement>
+          
+          <AnimatedElement
+            variant="fadeInRight"
+            delay={0.2}
+            className="lg:w-1/2"
+          >
+            <h2 className="text-3xl font-bold mb-6">
+              About <span className="gradient-text">Me</span>
+            </h2>
+            
+            <p className="text-lg mb-4 text-foreground/80">
+              I&apos;m a blockchain developer with a passion for building decentralized applications that revolutionize how we interact with technology and each other.
+            </p>
+            
+            <p className="text-lg mb-6 text-foreground/80">
+              With over 5 years of experience in Web3 development, I&apos;ve worked on everything from smart contracts and DeFi protocols to NFT platforms and DAO governance systems. I believe in the power of blockchain to create more transparent, efficient, and equitable systems.
+            </p>
+            
+            <AnimatedElement
+              variant="fadeInUp"
+              delay={0.4}
+              className="flex flex-wrap gap-4 mb-8"
+            >
+              <div className="bg-accent/10 px-4 py-2 rounded-lg border border-accent/20">
+                <span className="text-accent font-bold">5+</span>
+                <p className="text-sm">Years Experience</p>
+              </div>
+              
+              <div className="bg-accent/10 px-4 py-2 rounded-lg border border-accent/20">
+                <span className="text-accent font-bold">30+</span>
+                <p className="text-sm">Projects Completed</p>
+              </div>
+              
+              <div className="bg-accent/10 px-4 py-2 rounded-lg border border-accent/20">
+                <span className="text-accent font-bold">15+</span>
+                <p className="text-sm">Smart Contracts</p>
+              </div>
+            </AnimatedElement>
+            
+            <div className="flex flex-wrap gap-2">
+              <AnimatedElement
+                variant="fadeInUp"
+                delay={0.6}
+                className="inline-block"
+              >
+                <a 
+                  href="/resume.pdf" 
+                  target="_blank"
+                  className="inline-flex items-center px-4 py-2 rounded-md bg-accent text-white font-medium hover:opacity-90 transition-opacity"
+                >
+                  <span>Download Resume</span>
+                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                </a>
+              </AnimatedElement>
+            </div>
+          </AnimatedElement>
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 };
 
